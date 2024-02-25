@@ -17,7 +17,7 @@ const BookSchema = new Schema({
 const UserSchema = new Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
-    isActivated: {type: Boolean, default: false},
+    isActivated: {type: Boolean, default: true},
     activationLink: {type: String, required: true},
     role: {type: String, default: "user"},
     books: {type: [BookSchema], default: []},
