@@ -17,6 +17,9 @@ class AuthService {
         const activationLink = uuid.v4()
         const newUser = await UserModel.create({email, password: hash, activationLink })
         mailService.sendActivationMail(email, process.env.API_URL + '/auth/activate/' +  activationLink)
+            .then(() => {
+                console.log('send to mail', email)
+            })
 
         return new UserDto(newUser)
     }
